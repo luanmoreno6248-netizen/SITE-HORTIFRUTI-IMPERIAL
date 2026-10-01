@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Hortifruti Imperial | Frutas, Verduras e Legumes em Camamu-BA</title>
+  <meta name="description" content="Hortifruti Imperial em Camamu-BA. Frutas, verduras e legumes frescos, ofertas e entrega. Faça seu pedido pelo WhatsApp.">
+  <meta name="theme-color" content="#0F3D2E">
+  <meta name="author" content="Hortifruti Imperial">
+  <meta name="keywords" content="hortifruti, Camamu, Bahia, frutas, verduras, legumes, entrega, whatsapp, Hortifruti Imperial">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="apple-touch-icon" href="assets/logo.jpg">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Hortifruti Imperial">
+  <meta property="og:title" content="Hortifruti Imperial | Frutas, Verduras e Legumes em Camamu-BA">
+  <meta property="og:description" content="Hortifruti Imperial em Camamu-BA. Frutas, verduras e legumes frescos, ofertas e entrega. Faça seu pedido pelo WhatsApp.">
+  <meta property="og:image" content="assets/logo.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hortifruti Imperial | Frutas, Verduras e Legumes em Camamu-BA">
+  <meta name="twitter:description" content="Hortifruti Imperial em Camamu-BA. Frutas, verduras e legumes frescos, ofertas e entrega. Faça seu pedido pelo WhatsApp.">
+
+  <link rel="preconnect" href="https://wa.me">
+  <script>document.documentElement.classList.add("js");</script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#produtos">Pular para os produtos</a>
+
+<!-- ===================== HEADER ===================== -->
+<header class="header" id="header">
+  <div class="container header__inner">
+
+    <a href="#inicio" class="brand" aria-label="Hortifruti Imperial — início">
+      <img src="assets/logo.png" alt="Logo oficial do Hortifruti Imperial" class="brand__logo" width="72" height="72">
+      <span class="brand__text">
+        <strong>HORTIFRUTI</strong>
+        <em>IMPERIAL</em>
+      </span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Menu principal">
+      <a href="#inicio" class="nav__link">INÍCIO</a>
+      <a href="#produtos" class="nav__link">PRODUTOS</a>
+      <a href="#ofertas" class="nav__link">OFERTAS</a>
+      <a href="#sobre" class="nav__link">SOBRE</a>
+      <a href="#contato" class="nav__link">CONTATO</a>
+      <a href="https://wa.me/5573998431375" target="_blank" rel="noopener noreferrer" class="nav__zap nav__zap--mobile">💬 WHATSAPP</a>
+    </nav>
+
+    <div class="header__actions">
+      <button type="button" class="btn btn--cart" id="openCart">
+        <span class="btn__icon" aria-hidden="false">🛒</span>
+        <span class="btn__label">MEU PEDIDO</span>
+        <span class="cart-badge" id="cartBadge" hidden>0</span>
+      </button>
+
+      <a href="https://wa.me/5573998431375" target="_blank" rel="noopener noreferrer" class="btn btn--zap header__zap">
+        💬 <span>WHATSAPP</span>
+      </a>
+
+      <button type="button" class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="inicio">
+  <div class="hero__leaf hero__leaf--1" aria-hidden="true"></div>
+  <div class="hero__leaf hero__leaf--2" aria-hidden="true"></div>
+
+  <div class="container hero__inner">
+    <div class="hero__content reveal">
+      <div class="hero__logo">
+        <img src="assets/logo.png" alt="Logo oficial do Hortifruti Imperial" width="260" height="260">
+      </div>
+      <h1 class="hero__title">Frescor que chega à sua mesa.</h1>
+      <p class="hero__subtitle">Frutas, verduras e legumes selecionados para você. Faça seu pedido pelo WhatsApp e receba em Camamu-BA.</p>
+
+      <div class="hero__cta">
+        <a href="#produtos" class="btn btn--lg btn--lime">VER PRODUTOS</a>
+        <a href="https://wa.me/5573998431375" target="_blank" rel="noopener noreferrer" class="btn btn--lg btn--orange">PEDIR PELO WHATSAPP</a>
+      </div>
+
+      <ul class="hero__highlights">
+        <li>🕒 <span>7:30 às 20:00</span></li>
+        <li>🚚 <span>Entrega em Camamu-BA</span></li>
+        <li>💳 <span>Cartão, Pix ou dinheiro</span></li>
+      </ul>
+    </div>
+
+    <div class="hero__visual reveal" aria-hidden="true">
+      <div class="orb orb--a"><img src="assets/products/morango.jpg" alt=""></div>
+      <div class="orb orb--b"><img src="assets/products/cat-verduras.jpg" alt=""></div>
+      <div class="orb orb--c"><img src="assets/products/cenoura.jpg" alt=""></div>
+      <div class="orb orb--d"><img src="assets/products/tomates.jpg" alt=""></div>
+      <div class="orb orb--e"><img src="assets/products/limao.jpg" alt=""></div>
+      <div class="orb orb--f"><img src="assets/products/abacaxi.jpg" alt=""></div>
+      <div class="hero__badge">
+        <span class="hero__badge-top">FRESCURA TODOS OS DIAS</span>
+        <strong>100%</strong>
+        <span class="hero__badge-bottom">PRODUTOS NATURAIS</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero__wave" aria-hidden="true"></div>
+</section>
+
+<!-- ===================== CATEGORIAS ===================== -->
+<section class="section section--cream" id="categorias">
+  <div class="container">
+    <header class="section__head reveal">
+      <span class="eyebrow">CATEGORIAS</span>
+      <h2 class="section__title">Encontre o que você precisa</h2>
+      <p class="section__lead">Escolha uma categoria e veja os produtos disponíveis.</p>
+    </header>
+
+    <div class="cat-grid" id="catGrid"></div>
+  </div>
+</section>
+
+<!-- ===================== PRODUTOS ===================== -->
+<section class="section" id="produtos">
+  <div class="container">
+    <header class="section__head reveal">
+      <span class="eyebrow">NOSSO CATÁLOGO</span>
+      <h2 class="section__title">Produtos fresquinhos</h2>
+      <p class="section__lead">Busque, filtre e monte o seu pedido.</p>
+    </header>
+
+    <div class="toolbar reveal">
+      <div class="search">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="search" id="searchInput" placeholder="🔎 Buscar produto..." autocomplete="off" aria-label="🔎 Buscar produto...">
+        <button type="button" class="search__clear" id="searchClear" aria-label="Limpar busca" hidden>×</button>
+      </div>
+
+      <div class="filters" id="filters" role="group" aria-label="Filtrar por categoria">
+        <button type="button" class="chip is-active" data-cat="Todos">TODOS</button>
+        <button type="button" class="chip" data-cat="Frutas">FRUTAS</button>
+        <button type="button" class="chip" data-cat="Verduras">VERDURAS</button>
+        <button type="button" class="chip" data-cat="Legumes">LEGUMES</button>
+      </div>
+    </div>
+
+    <p class="results-count" id="resultsCount" aria-live="polite"></p>
+
+    <div class="prod-grid" id="prodGrid"></div>
+
+    <div class="empty" id="emptyState" hidden>
+      <div class="empty__icon">🧺</div>
+      <h3>Nenhum produto encontrado</h3>
+      <p id="emptyMsg">Tente outro termo ou veja todos os produtos.</p>
+      <button type="button" class="btn btn--orange" id="resetFilters">VER TODOS OS PRODUTOS</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== OFERTAS ===================== -->
+<section class="section section--dark" id="ofertas">
+  <div class="container">
+    <header class="section__head section__head--light reveal">
+      <span class="eyebrow eyebrow--lime">ESPECIAIS</span>
+      <h2 class="section__title">🔥 OFERTAS DO HORTIFRUTI IMPERIAL</h2>
+      <p class="section__lead">Produtos selecionados com preços claros por KG.</p>
+    </header>
+
+    <div class="offer-grid" id="offerGrid"></div>
+  </div>
+</section>
+
+<!-- ===================== DIFERENCIAIS ===================== -->
+<section class="section section--cream" id="diferenciais">
+  <div class="container">
+    <header class="section__head reveal">
+      <span class="eyebrow">POR QUE ESCOLHER</span>
+      <h2 class="section__title">Por que escolher o Hortifruti Imperial?</h2>
+    </header>
+
+    <div class="diff-grid">
+      <article class="diff reveal">
+        <div class="diff__icon">🥬</div>
+        <h3>PRODUTOS SELECIONADOS</h3>
+        <p>Produtos escolhidos com cuidado.</p>
+      </article>
+      <article class="diff reveal">
+        <div class="diff__icon">🚚</div>
+        <h3>ENTREGA</h3>
+        <p>Receba seus produtos em Camamu-BA.</p>
+      </article>
+      <article class="diff reveal">
+        <div class="diff__icon">💰</div>
+        <h3>PREÇO JUSTO</h3>
+        <p>Qualidade e bons preços.</p>
+      </article>
+      <article class="diff reveal">
+        <div class="diff__icon">💬</div>
+        <h3>PEDIDO FÁCIL</h3>
+        <p>Faça seu pedido diretamente pelo WhatsApp.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SOBRE ===================== -->
+<section class="section" id="sobre">
+  <div class="container about">
+    <div class="about__media reveal">
+      <img src="assets/logo.png" alt="Logo oficial do Hortifruti Imperial" class="about__logo">
+      <div class="about__photo">
+        <img src="assets/products/cat-frutas.jpg" alt="Frutas frescas selecionadas do Hortifruti Imperial" loading="lazy">
+      </div>
+    </div>
+
+    <div class="about__body reveal">
+      <span class="eyebrow">SOBRE NÓS</span>
+      <h2 class="section__title">Sobre o Hortifruti Imperial</h2>
+      <p class="about__text">O Hortifruti Imperial oferece frutas, verduras e legumes selecionados para levar mais qualidade, frescor e praticidade para a mesa dos clientes de Camamu-BA.</p>
+
+      <ul class="info-list">
+        <li><span class="info-list__ico">📍</span> Rua Conselheiro Monteiro, Cidade Alta</li>
+        <li><span class="info-list__ico">📍</span> Camamu - BA</li>
+        <li><span class="info-list__ico">🕐</span> 7:30 às 20:00</li>
+        <li><span class="info-list__ico">🚚</span> Entrega disponível</li>
+        <li><span class="info-list__ico">💳</span> Cartão, Pix ou dinheiro</li>
+      </ul>
+
+      <a href="#produtos" class="btn btn--lime btn--lg">VER PRODUTOS</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTATO ===================== -->
+<section class="section section--dark" id="contato">
+  <div class="container">
+    <header class="section__head section__head--light reveal">
+      <span class="eyebrow eyebrow--lime">FALE CONOSCO</span>
+      <h2 class="section__title">Entre em contato</h2>
+    </header>
+
+    <div class="contact-grid">
+      <article class="contact-card reveal">
+        <span class="contact-card__ico">📍</span>
+        <h3>Endereço</h3>
+        <p>Rua Conselheiro Monteiro, Cidade Alta, Camamu-BA</p>
+      </article>
+
+      <article class="contact-card reveal">
+        <span class="contact-card__ico">📱</span>
+        <h3>WhatsApp</h3>
+        <p><a href="https://wa.me/5573998431375" target="_blank" rel="noopener noreferrer">(73) 99843-1375</a></p>
+      </article>
+
+      <article class="contact-card reveal">
+        <span class="contact-card__ico">📸</span>
+        <h3>Instagram</h3>
+        <p><a href="https://www.instagram.com/hortifrutiimperial01/" target="_blank" rel="noopener noreferrer">@hortifrutiimperial01</a></p>
+      </article>
+
+      <article class="contact-card reveal">
+        <span class="contact-card__ico">🕐</span>
+        <h3>Horário</h3>
+        <p>7:30 às 20:00</p>
+      </article>
+
+      <article class="contact-card reveal">
+        <span class="contact-card__ico">🚚</span>
+        <h3>Entrega</h3>
+        <p>SIM</p>
+      </article>
+
+      <article class="contact-card reveal">
+        <span class="contact-card__ico">💳</span>
+        <h3>Pagamento</h3>
+        <p>Crédito, débito, Pix ou dinheiro</p>
+      </article>
+    </div>
+
+    <div class="contact__cta reveal">
+      <a href="https://wa.me/5573998431375" target="_blank" rel="noopener noreferrer" class="btn btn--lg btn--lime">FALAR NO WHATSAPP</a>
+      <a href="https://www.instagram.com/hortifrutiimperial01/" target="_blank" rel="noopener noreferrer" class="btn btn--lg btn--outline">SEGUIR NO INSTAGRAM</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================== RODAPÉ ===================== -->
+<footer class="footer">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <img src="assets/logo.png" alt="Logo oficial do Hortifruti Imperial" class="footer__logo" width="90" height="90">
+      <div>
+        <strong class="footer__name">HORTIFRUTI IMPERIAL</strong>
+        <p class="footer__tag">Frescor e qualidade todos os dias.</p>
+      </div>
+    </div>
+
+    <nav class="footer__links" aria-label="Links do rodapé">
+      <h4>Navegação</h4>
+      <a href="#inicio">Início</a>
+      <a href="#produtos">Produtos</a>
+      <a href="#ofertas">Ofertas</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+    </nav>
+
+    <div class="footer__contact">
+      <h4>Contato</h4>
+      <a href="https://wa.me/5573998431375" target="_blank" rel="noopener noreferrer">💬 WhatsApp: (73) 99843-1375</a>
+      <a href="https://www.instagram.com/hortifrutiimperial01/" target="_blank" rel="noopener noreferrer">📸 @hortifrutiimperial01</a>
+      <span>📍 Rua Conselheiro Monteiro, Cidade Alta</span>
+      <span>🕐 7:30 às 20:00</span>
+    </div>
+
+    <div class="footer__city">
+      <h4>Localização</h4>
+      <p>📍 Camamu - BA</p>
+      <p>🚚 Entrega disponível</p>
+      <p>💳 Cartão, Pix ou dinheiro</p>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <div class="container">
+      <span>© <span id="year">2026</span> Hortifruti Imperial — Camamu - BA</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== CARRINHO ===================== -->
+<div class="overlay" id="overlay" hidden></div>
+
+<aside class="cart" id="cart" aria-label="Meu pedido" aria-hidden="true" inert>
+  <header class="cart__head">
+    <div>
+      <span class="eyebrow">SEU CARRINHO</span>
+      <h2>MEU PEDIDO</h2>
+    </div>
+    <button type="button" class="cart__close" id="closeCart" aria-label="Fechar meu pedido">×</button>
+  </header>
+
+  <div class="cart__body" id="cartBody">
+    <div class="cart__empty" id="cartEmpty">
+      <div class="cart__empty-ico">🧺</div>
+      <h3>Seu pedido está vazio</h3>
+      <p>Adicione produtos fresquinhos para montar o seu pedido.</p>
+      <button type="button" class="btn btn--lime" id="cartShop">VER PRODUTOS</button>
+    </div>
+
+    <ul class="cart__list" id="cartList"></ul>
+  </div>
+
+  <footer class="cart__foot" id="cartFoot" hidden>
+    <div class="cart__row">
+      <span>Produtos</span>
+      <strong id="cartCount">0 itens</strong>
+    </div>
+    <div class="cart__row cart__row--total">
+      <span>TOTAL DO PEDIDO</span>
+      <strong id="cartTotal">R$ 0,00</strong>
+    </div>
+    <div class="cart__row cart__row--pay">
+      <span>Forma de pagamento</span>
+      <strong id="cartPay">escolher no checkout</strong>
+    </div>
+    <p class="cart__note" id="cartNote" hidden></p>
+    <button type="button" class="btn btn--zap btn--block btn--lg" id="sendOrder">
+      ENVIAR PEDIDO PELO WHATSAPP
+    </button>
+    <button type="button" class="btn btn--ghost btn--block" id="clearCart">LIMPAR PEDIDO</button>
+    <p class="cart__hint">Entrega: Sim · Pagamento: crédito, débito, Pix ou dinheiro</p>
+  </footer>
+</aside>
+
+<!-- ===================== COMO DESEJA COMPRAR (KG OU UNIDADE) ===================== -->
+<div class="choice" id="choice" hidden>
+  <div class="choice__backdrop" data-choice-close></div>
+
+  <div class="choice__panel" role="dialog" aria-modal="true" aria-labelledby="choiceName">
+    <header class="choice__head">
+      <img class="choice__img" id="choiceImg" alt="">
+      <div class="choice__info">
+        <span class="eyebrow eyebrow--lime">NOVO ITEM</span>
+        <h2 id="choiceName">Produto</h2>
+        <p class="choice__price" id="choicePrice"></p>
+      </div>
+      <button type="button" class="choice__close" id="choiceClose" aria-label="Fechar">×</button>
+    </header>
+
+    <div class="choice__body">
+      <p class="choice__ask">Como deseja comprar?</p>
+
+      <div class="choice__types" id="choiceTypes" role="group" aria-label="Como deseja comprar?">
+        <button type="button" class="type-btn is-active" data-tipo="kg" aria-pressed="true">Por KG</button>
+        <button type="button" class="type-btn" data-tipo="un" aria-pressed="false">Por unidade</button>
+      </div>
+
+      <p class="choice__label" id="choiceQtyLabel">Quantidade em KG</p>
+      <div class="choice__chips" id="choiceChips"></div>
+
+      <div class="qty qty--lg">
+        <button type="button" id="choiceDec" aria-label="Diminuir quantidade">−</button>
+        <input class="qty__input" id="choiceQtd" type="text" inputmode="decimal" autocomplete="off" value="1" aria-label="Quantidade">
+        <span class="qty__unit" id="choiceUnit">KG</span>
+        <button type="button" id="choiceInc" aria-label="Aumentar quantidade">+</button>
+      </div>
+
+      <div class="choice__total">
+        <span>Total</span>
+        <strong id="choiceTotal">R$ 0,00</strong>
+      </div>
+
+      <p class="choice__hint" id="choiceHint" hidden></p>
+
+      <button type="button" class="btn btn--orange btn--block btn--lg" id="choiceAdd">ADICIONAR AO PEDIDO</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== CHECKOUT: COMO DESEJA PAGAR? ===================== -->
+<div class="choice checkout" id="checkout" hidden>
+  <div class="choice__backdrop" data-checkout-close></div>
+
+  <div class="choice__panel" role="dialog" aria-modal="true" aria-labelledby="payTitle">
+    <header class="choice__head">
+      <div class="choice__info">
+        <span class="eyebrow eyebrow--lime">FINALIZAR PEDIDO</span>
+        <h2 id="payTitle">Como deseja pagar?</h2>
+        <p class="choice__price" id="payTotal">Total do pedido: R$ 0,00</p>
+      </div>
+      <button type="button" class="choice__close" id="payClose" aria-label="Fechar pagamento">×</button>
+    </header>
+
+    <div class="choice__body">
+      <fieldset class="pay-list" id="payList">
+        <legend class="pay-legend">Escolha uma forma de pagamento:</legend>
+
+        <label class="pay-option">
+          <input type="checkbox" class="pay-check" name="pagamento" value="Cartão de crédito">
+          <span class="pay-box" aria-hidden="true"></span>
+          <span class="pay-name">Cartão de crédito</span>
+        </label>
+
+        <label class="pay-option">
+          <input type="checkbox" class="pay-check" name="pagamento" value="Cartão de débito">
+          <span class="pay-box" aria-hidden="true"></span>
+          <span class="pay-name">Cartão de débito</span>
+        </label>
+
+        <label class="pay-option">
+          <input type="checkbox" class="pay-check" name="pagamento" value="Pix">
+          <span class="pay-box" aria-hidden="true"></span>
+          <span class="pay-name">Pix</span>
+        </label>
+
+        <label class="pay-option">
+          <input type="checkbox" class="pay-check" name="pagamento" value="Dinheiro">
+          <span class="pay-box" aria-hidden="true"></span>
+          <span class="pay-name">Dinheiro</span>
+        </label>
+      </fieldset>
+
+      <p class="pay-error" id="payError" hidden>Selecione uma forma de pagamento para finalizar o pedido.</p>
+
+      <button type="button" class="btn btn--zap btn--block btn--lg" id="paySend">ENVIAR PEDIDO PELO WHATSAPP</button>
+      <button type="button" class="btn btn--ghost btn--block" id="payBack">VOLTAR AO PEDIDO</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== WHATSAPP FLUTUANTE ===================== -->
+<aside class="fab-holder" aria-label="Atalho do WhatsApp">
+<a class="fab" href="https://wa.me/5573998431375" target="_blank" rel="noopener noreferrer" aria-label="Pedir agora no WhatsApp (73) 99843-1375">
+  <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true" fill="currentColor"><path d="M16.01 3.2C9 3.2 3.3 8.9 3.3 15.9c0 2.24.59 4.42 1.7 6.35L3.2 28.8l6.72-1.76a12.8 12.8 0 0 0 6.09 1.55c7 0 12.7-5.7 12.7-12.7S23 3.2 16.01 3.2zm0 23.1c-1.9 0-3.76-.51-5.4-1.47l-.39-.23-4 .98 1.06-3.86-.25-.4a10.3 10.3 0 0 1-1.58-5.52c0-5.72 4.66-10.37 10.38-10.37 5.72 0 10.36 4.65 10.36 10.37 0 5.72-4.65 10.37-10.36 10.37zm5.69-7.75c-.31-.16-1.85-.91-2.14-1.01-.29-.11-.5-.16-.71.16-.21.31-.81 1.01-.99 1.22-.18.21-.37.24-.68.08-.31-.16-1.32-.49-2.52-1.55-.93-.83-1.56-1.85-1.74-2.16-.18-.31-.02-.48.14-.64.14-.14.31-.37.47-.55.16-.18.21-.31.31-.52.11-.21.05-.39-.03-.55-.08-.16-.71-1.72-.98-2.35-.26-.62-.52-.54-.71-.55l-.61-.01c-.21 0-.55.08-.84.39-.29.31-1.1 1.08-1.1 2.62 0 1.55 1.13 3.04 1.29 3.25.16.21 2.22 3.4 5.39 4.77.75.32 1.34.52 1.8.66.76.24 1.45.21 2 .13.61-.09 1.85-.76 2.11-1.49.26-.73.26-1.36.18-1.49-.08-.13-.29-.21-.6-.37z"/></svg>
+  <span class="fab__label">Pedir agora</span>
+</a>
+</aside>
+
+<!-- ===================== TOAST ===================== -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Teste responsivo — compra por KG/unidade</title>
+  <style>
+    body { margin: 0; font-family: system-ui, sans-serif; background: #222; color: #eee; }
+    .bar { padding: 8px 12px; font-size: 13px; background: #111; }
+    iframe { display: block; border: 0; width: 100%; height: 620px; background: #fff; }
+    #result { white-space: pre-wrap; font-family: monospace; font-size: 12px; padding: 10px 12px; }
+  </style>
+</head>
+<body>
+  <div class="bar">Largura do quadro: <b id="w">0</b>px — modal "Como deseja comprar?" + carrinho</div>
+  <div style="width: 100%; max-width: 100%;">
+    <iframe id="frame" src="/index.html"></iframe>
+  </div>
+  <div id="result">carregando…</div>
+  <script>
+    const larguras = [320, 360, 375, 414, 600, 768, 900, 1024, 1280];
+    const frame = document.getElementById("frame");
+    const out = [];
+    let i = 0;
+    let limpo = false;
+
+    /* 1ª carga: limpa pedidos anteriores e recarrega para começar do zero */
+    frame.addEventListener("load", () => {
+      try {
+        const win = frame.contentWindow;
+        win.confirm = () => true;                 /* não bloquear "LIMPAR PEDIDO" */
+        /* aba em segundo plano congela animações: mede o layout já assentado */
+        const css = win.document.createElement("style");
+        css.textContent = "*{animation:none !important;transition:none !important}";
+        win.document.head.appendChild(css);
+        if (!limpo) {
+          limpo = true;
+          win.localStorage.clear();
+          win.location.reload();
+          return;
+        }
+      } catch (e) { /* segue mesmo assim */ }
+      aplicar();
+    });
+
+    function aplicar() {
+      if (i >= larguras.length) {
+        document.getElementById("result").textContent = out.join("\n");
+        window.__resultado = out.slice();
+        return;
+      }
+      const w = larguras[i++];
+      frame.style.width = w + "px";
+      document.getElementById("w").textContent = w;
+      setTimeout(() => testar(w), 800);
+    }
+
+    function testar(w) {
+      try {
+        const win = frame.contentWindow;
+        const d = frame.contentDocument;
+        const overflow = () => d.documentElement.scrollWidth - d.documentElement.clientWidth;
+
+        const base = overflow();
+
+        /* 1) abre a janela de compra do produto 3 (Tomates, por KG) */
+        d.querySelector('#prodGrid [data-add="3"]').click();
+
+        const painel = d.querySelector(".choice__panel");
+        const rect = painel.getBoundingClientRect();
+        const modalOverflow = overflow();
+        const tipos = [...d.querySelectorAll(".type-btn")].map(b => Math.round(b.getBoundingClientRect().width));
+        const chips = d.querySelectorAll("#choiceChips .chip-sm").length;
+        const totalKG = d.querySelector("#choiceTotal").textContent;
+        const passou = Math.round(rect.right) > win.innerWidth || Math.round(rect.left) < 0;
+        const alturaCabe = rect.height <= win.innerHeight;
+
+        /* 2) troca para "Por unidade" e confirma */
+        d.querySelector('.type-btn[data-tipo="un"]').click();
+        const qtdInput = d.querySelector("#choiceQtd");
+        qtdInput.value = "2";
+        qtdInput.dispatchEvent(new Event("change", { bubbles: true }));
+        const totalUnidade = d.querySelector("#choiceTotal").textContent;
+        d.querySelector("#choiceAdd").click();
+
+        /* abre o carrinho para medir o item em uso real */
+        setTimeout(() => { d.querySelector("#openCart").click(); }, 320);
+
+        setTimeout(() => {
+          const cart = d.querySelector("#cart");
+          const lista = d.querySelector("#cartList");
+          const item = d.querySelector(".cart-item");
+          const cartOverflow = overflow();
+          const itemDentro = item ? lista.scrollWidth <= lista.clientWidth + 1 : true;
+          const cartRect = cart.getBoundingClientRect();
+          const itemRect = item ? item.getBoundingClientRect() : null;
+          const qtyRect = item ? item.querySelector(".qty").getBoundingClientRect() : null;
+          const qtyCabe = qtyRect && itemRect
+            ? (qtyRect.left >= itemRect.left - 1 && qtyRect.right <= itemRect.right + 1)
+            : true;
+
+          out.push(
+            w + "px | overflowX=" + base +
+            " | modalOverflowX=" + modalOverflow +
+            " | modalCabe=" + (passou ? "NAO" : "sim") +
+            " | alturaCabe=" + (alturaCabe ? "sim" : "NAO") +
+            " | tipoBtns=" + tipos.join("+") +
+            " | chips=" + chips +
+            " | totalKG=" + totalKG +
+            " | totalUn=" + totalUnidade +
+            " | carrinhoOverflowX=" + cartOverflow +
+            " | itemInterno=" + (itemDentro ? "sim" : "NAO(" + (lista.scrollWidth - lista.clientWidth) + "px)") +
+            " | controleCabe=" + (qtyCabe ? "sim" : "NAO") +
+            " | carrinhoAberto=" + (cart.classList.contains("is-open") ? "sim" : "NAO") +
+            " | linhas=" + d.querySelectorAll(".cart-item").length +
+            " | badge=" + d.querySelector("#cartBadge").textContent +
+            " | total=" + d.querySelector("#cartTotal").textContent
+          );
+
+          /* ---- checkout: como deseja pagar? ---- */
+          d.querySelector("#sendOrder").click();
+
+          setTimeout(() => {
+            const ck = d.querySelector("#checkout");
+            const ckRect = ck.querySelector(".choice__panel").getBoundingClientRect();
+            const opcoes = [...ck.querySelectorAll(".pay-option")];
+            const ckCabe = ckRect.left >= -1 && ckRect.right <= win.innerWidth + 1;
+            const ckAltura = ckRect.height <= win.innerHeight;
+            const opcoesCabe = opcoes.every((o) => {
+              const b = o.getBoundingClientRect();
+              return b.left >= ckRect.left - 1 && b.right <= ckRect.right + 1;
+            });
+            const nadaMarcado = ck.querySelectorAll(".pay-check:checked").length === 0;
+
+            /* envia SEM escolher: precisa bloquear e mostrar o erro */
+            let abriuSemEscolha = false;
+            const wOrig = win.open;
+            win.open = () => { abriuSemEscolha = true; return null; };
+            d.querySelector("#paySend").click();
+            win.open = wOrig;
+            const erroMostrado = !d.querySelector("#payError").hidden;
+
+            /* escolhe Pix pelo rótulo e confere o registro */
+            ck.querySelectorAll("#payList .pay-option")[2].querySelector(".pay-name").click();
+            const marcados = ck.querySelectorAll(".pay-check:checked").length;
+            d.querySelector("#payClose").click();
+
+            out.push(
+              w + "px checkout | overflowX=" + overflow() +
+              " | cabe=" + (ckCabe ? "sim" : "NAO") +
+              " | alturaCabe=" + (ckAltura ? "sim" : "NAO") +
+              " | opcoes=" + opcoes.length +
+              " | opcoesCabe=" + (opcoesCabe ? "sim" : "NAO") +
+              " | abriaVazio=" + (nadaMarcado ? "sim" : "NAO") +
+              " | bloqueioSemPagamento=" + (erroMostrado && !abriuSemEscolha ? "sim" : "NAO") +
+              " | marcadosAposClique=" + marcados +
+              " | total=" + d.querySelector("#payTotal").textContent +
+              " | pagNoCarrinho=" + d.querySelector("#cartPay").textContent
+            );
+
+            /* limpa para o próximo ciclo */
+            d.querySelector("#closeCart").click();
+            d.querySelector("#clearCart").click();
+            setTimeout(aplicar, 500);
+          }, 700);
+        }, 500);
+      } catch (e) {
+        out.push(w + "px | ERRO " + e.message);
+        aplicar();
+      }
+    }
+
+    setTimeout(() => { if (!out.length) aplicar(); }, 8000);
+  </script>
+</body>
+</html>

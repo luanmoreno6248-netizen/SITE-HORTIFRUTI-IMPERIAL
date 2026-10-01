@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Teste responsivo — Hortifruti Imperial</title>
+  <style>
+    body { margin: 0; font-family: system-ui, sans-serif; background: #222; color: #eee; }
+    .bar { padding: 8px 12px; font-size: 13px; background: #111; }
+    iframe { display: block; border: 0; width: 100%; height: 640px; background: #fff; }
+    #result { white-space: pre-wrap; font-family: monospace; font-size: 12px; padding: 10px 12px; }
+  </style>
+</head>
+<body>
+  <div class="bar">Largura do quadro: <b id="w">0</b>px</div>
+  <div style="width: 100%; max-width: 100%;">
+    <iframe id="frame" src="/index.html"></iframe>
+  </div>
+  <div id="result">carregando…</div>
+  <script>
+    const larguras = [320, 360, 375, 414, 600, 768, 900, 1024, 1280];
+    const frame = document.getElementById("frame");
+    const out = [];
+    let i = 0;
+
+    function aplicar() {
+      if (i >= larguras.length) {
+        document.getElementById("result").textContent = out.join("\n");
+        window.__resultado = out.slice();
+        return;
+      }
+      const w = larguras[i++];
+      frame.style.width = w + "px";
+      document.getElementById("w").textContent = w;
+      setTimeout(() => {
+        try {
+          const d = frame.contentDocument;
+          const html = d.documentElement;
+          const overflow = html.scrollWidth - html.clientWidth;
+          const menuVis = frame.contentWindow
+            .getComputedStyle(d.getElementById("hamburger")).display !== "none";
+          const navAberto = d.getElementById("nav").classList.contains("is-open");
+          const cols = frame.contentWindow
+            .getComputedStyle(d.getElementById("prodGrid")).gridTemplateColumns
+            .split(" ").length;
+          const headerH = Math.round(d.getElementById("header").getBoundingClientRect().height);
+          const heroTop = Math.round(d.getElementById("inicio").getBoundingClientRect().top);
+          out.push(
+            w + "px | overflowX=" + overflow +
+            " | hamburger=" + (menuVis ? "sim" : "nao") +
+            " | navAberto=" + navAberto +
+            " | colunasProd=" + cols +
+            " | header=" + headerH +
+            " | heroTop=" + heroTop
+          );
+        } catch (e) {
+          out.push(w + "px | ERRO " + e.message);
+        }
+        aplicar();
+      }, 700);
+    }
+
+    frame.addEventListener("load", aplicar);
+    setTimeout(() => { if (!out.length) aplicar(); }, 3000);
+  </script>
+</body>
+</html>
